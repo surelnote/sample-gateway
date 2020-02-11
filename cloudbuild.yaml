@@ -45,8 +45,8 @@ steps:
             app: $_PROJECT_NAME
         spec:
           ports:
-            - port: 8080
-              targetPort: 8080
+            - port: 80
+              targetPort: 80
           selector:
             app: $_PROJECT_NAME
           type:
@@ -74,7 +74,7 @@ steps:
                 - name: $_PROJECT_NAME
                   image: gcr.io/$PROJECT_ID/$_PROJECT_NAME:$COMMIT_SHA
                   ports:
-                    - containerPort: 8080
+                    - containerPort: 80
         EOF
 
 
