@@ -5,7 +5,7 @@ server:
 jwt:
   key: jwt_key
   salt: luvookSecret
-
+##TEST
 ---
 spring:
   profiles: default
