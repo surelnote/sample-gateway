@@ -1,0 +1,112 @@
+
+server:
+  port: 80
+
+jwt:
+  key: jwt_key
+  salt: luvookSecret
+
+---
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+      
+        - id: frontend
+          uri: http://192.168.0.11:8080
+          predicates:
+            - Path=/frontend/** 
+                 
+        - id: auth
+          uri: http://192.168.0.11:8081
+          predicates:
+            - Path=/fulfilment/mvc/auth/**
+        - id: fulfilment
+          uri: http://192.168.0.11:8081
+          predicates:
+            - Path=/fulfilment/**
+          filters:
+            - AuthorizationFilter
+             
+        - id: assurance
+          uri: http://192.168.0.2:8082
+          predicates:
+            - Path=/assurance/**
+#          filters:
+#            - AuthorizationFilter
+        - id: websocket
+          uri: http://192.168.0.2:8082
+          predicates:
+            - Path=/assurance/**    
+            
+        #- id: batch
+        #  uri: http://localhost:8083
+        #  predicates:
+        #    - Path=/batch/**
+            
+        - id: defualt
+          uri: http://192.168.0.11:8080
+          predicates:
+            - Path=/**
+                        
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
+    
+---
+spring:
+  profiles: docker
+  
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: http://fulfilment:8080
+          predicates:
+            - Path=/fulfilment/mvc/auth/**
+        - id: fulfilment
+          uri: http://fulfilment:8080
+          predicates:
+            - Path=/fulfilment/**
+          filters:
+            - AuthorizationFilter
+        - id: assurance
+          uri: http://assurance:8080
+          predicates:
+            - Path=/assurance/**
+        - id: websocket
+          uri: http://assurance:8080
+          predicates:
+            - Path=/assurance/**    
+        - id: defualt
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**            
+            
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
