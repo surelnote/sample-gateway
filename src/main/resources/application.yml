@@ -72,10 +72,6 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: frontend
-          uri: http://frontend:8080
-          predicates:
-            - Path=/frontend/**
         - id: auth
           uri: http://fulfilment:8080
           predicates:
