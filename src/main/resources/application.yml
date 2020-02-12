@@ -17,7 +17,6 @@ spring:
           uri: http://192.168.0.11:8080
           predicates:
             - Path=/frontend/** 
-                 
         - id: auth
           uri: http://192.168.0.11:8081
           predicates:
@@ -28,7 +27,6 @@ spring:
             - Path=/fulfilment/**
           filters:
             - AuthorizationFilter
-             
         - id: assurance
           uri: http://192.168.0.2:8082
           predicates:
@@ -39,12 +37,10 @@ spring:
           uri: http://192.168.0.2:8082
           predicates:
             - Path=/assurance/**    
-            
         #- id: batch
         #  uri: http://localhost:8083
         #  predicates:
         #    - Path=/batch/**
-            
         - id: defualt
           uri: http://192.168.0.11:8080
           predicates:
