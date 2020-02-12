@@ -50,7 +50,8 @@ steps:
           selector:
             app: $_PROJECT_NAME
           type:
-              LoadBalancer
+              #LoadBalancer
+              NodePort
         EOF
 
         cat <<EOF | kubectl apply -f -
