@@ -14,21 +14,21 @@ spring:
       routes:
       
         - id: frontend
-          uri: http://192.168.0.11:8080
+          uri: http://localhost:8080
           predicates:
             - Path=/frontend/** 
         - id: auth
-          uri: http://192.168.0.11:8081
+          uri: http://localhost:8081
           predicates:
             - Path=/fulfilment/mvc/auth/**
         - id: fulfilment
-          uri: http://192.168.0.11:8081
+          uri: http://localhost:8081
           predicates:
             - Path=/fulfilment/**
           filters:
             - AuthorizationFilter
         - id: assurance
-          uri: http://192.168.0.2:8082
+          uri: http://localhost:8082
           predicates:
             - Path=/assurance/**
 #          filters:
@@ -42,7 +42,7 @@ spring:
         #  predicates:
         #    - Path=/batch/**
         - id: defualt
-          uri: http://192.168.0.11:8080
+          uri: http://localhost:8080
           predicates:
             - Path=/**
                         
