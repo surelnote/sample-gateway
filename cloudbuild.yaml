@@ -62,7 +62,7 @@ steps:
           labels:
             app: $_PROJECT_NAME
         spec:
-          replicas: 1
+          replicas: 2
           selector:
             matchLabels:
               app: $_PROJECT_NAME
