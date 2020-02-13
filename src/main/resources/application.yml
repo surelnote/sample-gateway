@@ -34,7 +34,7 @@ spring:
 #          filters:
 #            - AuthorizationFilter
         - id: websocket
-          uri: http://192.168.0.2:8082
+          uri: http://localhost:8082
           predicates:
             - Path=/assurance/**    
         #- id: batch

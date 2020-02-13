@@ -1,4 +1,4 @@
-package com.example.template;
+package com.nuri.lguplus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

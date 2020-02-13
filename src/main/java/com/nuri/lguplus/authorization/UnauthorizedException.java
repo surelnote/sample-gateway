@@ -1,4 +1,4 @@
-package com.example.template.authorization;
+package com.nuri.lguplus.authorization;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

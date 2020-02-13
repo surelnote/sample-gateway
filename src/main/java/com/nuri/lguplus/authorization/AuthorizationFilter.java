@@ -1,4 +1,4 @@
-package com.example.template.authorization;
+package com.nuri.lguplus.authorization;
 
 import java.io.UnsupportedEncodingException;
 import java.rmi.UnexpectedException;
